@@ -1,0 +1,141 @@
+theme = 'hex_steel' # ':theme' to see all themes, I like hex-steel's red/gray
+
+# Hellow, this is my very sane helix config! If you are new to Helix i
+#         recommend visiting the helix docs or running the tutor.
+#         It's an excellent editor and replacement of vim/neovim and
+#         features a very diffrent keymap and behavior then vim-likes.
+#         This config has imo the settings that are worth editing and
+#         has my defaults. I hope you enjoy the experiance and get
+#         good vibes!
+#                                                        -Hernet
+
+[editor]
+scrolloff = 12 # How far away from the edge of the screen to begin scrolling
+mouse = false # If mouse moves cursor
+#default-yank-register = " # Where to primarily store 'copy' value
+middle-click-paste = false # Paste by pressing scroll-wheel
+scroll-lines = 3 # Number of lines to scroll by wheel
+shell = ["pwsh.exe","-NoLogo","-NoProfile","-NoProfileLoadTime","-Command","$PSStyle.OutputRendering='PlainText';"] # Which Shell to use in editor
+line-number = "relative" # count numbers from top or from cursor
+cursorline = true # soft highlight the whole line of the cursor position
+cursorcolumn = true # soft highlight the whole column of the cursor position
+continue-comments = false # auto add comment symbol on newline 'smart'
+auto-completion = true # popup auto-complete
+path-completion = false # try to auto-complete file-paths
+auto-format = false # always format whole file on save !!!
+idle-timeout = 250 # milisecs since last input until trigger idle timer
+completion-timeout = 250 # milisecs until auto-complete popup, 5 = instant
+preview-completion-insert = true # apply completion on selection
+completion-trigger-len = 3 # length of word until auto-completion starts searching
+completion-replace = false # will replace the whole word on auto-completion apply
+auto-info = true # Display info boxes
+rulers = [80,90,96,120] # soft highlight these columns
+bufferline = "multiple" # Show buffers, never/multiple/always
+color-modes = false # Change the statusline color based on current mode
+text-width = 80 # max text width for soft-warping
+insert-final-newline = true # auto end all files with a empty line
+popup-border = "none" # border around popup, none/all/menu/popup
+jump-label-alphabet = "abcdefghijklmnopqrstuvwxyz" # jump alphabet for quick movement
+end-of-line-diagnostics = "hint" # diagnostics on line ends
+
+[editor.statusline] # Custom Statusline
+# TYPES
+# ["mode","spinner","file-name","file-absolute-path","file-base-name",
+# "file-modification-indicator","file-encoding","file-line-ending",
+# "read-only-indicator","total-line-numbers","file-type","diagnostics"
+# ,"workspace-diagnostics","seletions","primary-selction-length"
+# ,"postion","position-percentage","separator","spacer"
+# ,"version-control","register"]
+left = ["mode"]
+center = ["file-name"]
+right = ["file-type"]
+separator = "│"
+mode.normal = "NOR"
+mode.insert = "INS"
+mode.select = "VIS"
+
+[editor.lsp]
+enable = true
+display-messages = true
+display-progress-messages = false
+auto-signature-help = true
+display-inlay-hints = false
+display-signature-help-docs = true
+snippets = true
+goto-reference-include-declaration = true
+
+[editor.cursor-shape]
+# block/bar/underline/hidden
+normal = "block"
+insert = "bar"
+select = "hidden"
+
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
+
+[editor.auto-save]
+focus-lost = false
+after-delay.enable = false
+after-delay.timeout = 3000 # milisecs until save after no edits
+
+[editor.search]
+smart-case = true
+wrap-around = true
+
+[editor.whitespace]
+render = "none" # all/none
+# [editor.whitespace.render]
+# space = "none"
+# tab = "none"
+# nbsp = "none"
+# nnbsp = "none"
+# newline = "none"
+# [editor.whitespace.characters]
+# space = "-"
+# nbsp = "⍽"
+# nnbsp = "␣"
+# tab = "→"
+# newline = "⏎"
+# tabpad = "·" # Tabs will look like "→···" (depending on tab width)
+
+[editor.indent-guides]
+render = false
+character = "┊" # Some characters that work well: "▏", "╎", "┆", "┊", "⸽"
+skip-levels = 0
+
+[editor.gutters]
+layout = ["line-numbers","spacer","spacer"] # ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
+[editor.gutters.line-numbers]
+min-width = 3
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 20 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 40
+wrap-indicator = "↪ "  # set wrap-indicator to "" to hide it
+wrap-at-text-width = false
+
+[editor.smart-tab]
+enable = true
+supersede-menu = true
+[keys.normal]
+tab = "move_parent_node_end"
+S-tab = "move_parent_node_start"
+[keys.insert]
+S-tab = "move_parent_node_start"
+[keys.select]
+tab = "extend_parent_node_end"
+S-tab = "extend_parent_node_start"
+
+[editor.inline-diagnostics]
+# hint/info,warning/error/disable
+cursor-line = "hint" # Show detailed diagnostics on current line
+other-lines = "disable"
+prefix-len = 1
+max-wrap = 20
+max-diagnostics = 10
