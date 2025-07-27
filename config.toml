@@ -1,4 +1,4 @@
-theme = 'hex_steel' # ':theme' to see all themes, I like hex-steel's red/gray
+theme = 'catppuccin_mocha' # ':theme' to see all themes, I like hex-steel's red/gray
 
 # Hellow, this is my very sane helix config! If you are new to Helix i
 #         recommend visiting the helix docs or running the tutor.
@@ -71,12 +71,12 @@ insert = "bar"
 select = "hidden"
 
 [editor.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'"' = '"'
-'`' = '`'
-'<' = '>'
+# '(' = ')'
+# '{' = '}'
+# '[' = ']'
+# '"' = '"'
+# '`' = '`'
+# '<' = '>'
 
 [editor.auto-save]
 focus-lost = false
